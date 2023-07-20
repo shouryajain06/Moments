@@ -1,6 +1,4 @@
-import { Avatar, Paper, Typography } from "@material-ui/core";
 import React, { useState } from "react";
-import { BiLogOut } from "react-icons/bi";
 import { useHistory } from "react-router-dom";
 import CreateFormDrawer from "./CreateFormDrawer";
 
@@ -38,13 +36,13 @@ function stringAvatar(name) {
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const history = useHistory();
-  const [createOpen,setCreateOpen] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false);
 
   if (!user?.result?.name) {
     return (
       <div className="min-h-[99vh] border-r-[1px]">
         <div className="pt-5 px-4">
-          <div className="text-2xl">Please login to proceed <span onClick={()=>history.push('/auth')} className="underline text-blue-500 cursor-pointer">Login/Signup</span></div>
+          <div className="text-2xl">Please login to proceed <span onClick={() => history.push('/auth')} className="underline text-blue-500 cursor-pointer">Login/Signup</span></div>
         </div>
       </div>
     );
@@ -52,15 +50,15 @@ const Profile = () => {
 
   return (
     <div className="px-4 font-nunito py-3 border-r-[1px] min-h-[99vhe]">
-      <CreateFormDrawer isOpen={createOpen} handleClose={()=>setCreateOpen(false)}/>
+      <CreateFormDrawer isOpen={createOpen} handleClose={() => setCreateOpen(false)} />
       <div className="flex justify-end">
- 
+
       </div>
       <div className="mt-16 w-full flex items-center justify-center flex-col">
         <div
           className="w-[150px] text-6xl font-[900] tracking-widest text-white flex items-center justify-center h-[150px] rounded-full bg-gray-600"
           style={{
-            backgroundColor : stringToColor(user?.result?.name),
+            backgroundColor: stringToColor(user?.result?.name),
           }}
         >
           {`${user?.result?.name.split(' ')[0][0]}${user?.result?.name.split(' ')[1][0]}`}
@@ -88,10 +86,10 @@ const Profile = () => {
       <div className="mt-12">
         <div className="font-bold text-lg">{user?.result?.name}</div>
         <div className="mt-2 text-sm opacity-60">
-        Lucid thoughts . Ludic dreams . MoonstOne
+          Lucid thoughts . Ludic dreams . MoonstOne
         </div>
       </div>
-      <div onClick={()=>setCreateOpen(true)} className="w-full mt-10 gradient-button font-semibold text-lg rounded-md py-2 text-center">
+      <div onClick={() => setCreateOpen(true)} className="w-full mt-10 gradient-button font-semibold text-lg rounded-md py-2 text-center">
         Create Post
       </div>
     </div>
